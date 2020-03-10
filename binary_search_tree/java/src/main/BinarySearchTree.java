@@ -1,7 +1,8 @@
+package main;
+
 import com.sun.istack.internal.NotNull;
 import javafx.util.Pair;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
@@ -26,15 +27,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     private BinaryTreeNode root;
 
-    BinarySearchTree() {
+    public BinarySearchTree() {
         root = null;
     }
 
-    BinarySearchTree(T el) {
+    public BinarySearchTree(T el) {
         root = new BinaryTreeNode(el);
     }
 
-    BinarySearchTree(T el, T ...args) {
+    public BinarySearchTree(T el, T ...args) {
         this(el);
 
         for(T e : args) {
@@ -43,9 +44,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public void add(T el) {
+        if(root == null) {
+            root = new BinaryTreeNode(el);
+            return;
+        }
+
         BinaryTreeNode tmp = root;
         while(tmp != null) {
-            if(tmp.value.compareTo(el) > 0) {
+            if(tmp.value.compareTo(el) < 0) {
                 if(tmp.right == null) {
                     tmp.right = new BinaryTreeNode(el);
                     break;
@@ -66,7 +72,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         while(tmp != null) {
             if(tmp.value.compareTo(value) == 0) return true;
 
-            if(tmp.value.compareTo(value) > 0) {
+            if(tmp.value.compareTo(value) < 0) {
                 tmp = tmp.right;
             } else {
                 tmp = tmp.left;
@@ -176,7 +182,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         BinaryTreeNode tmpNode = root;
         while(tmpNode != null && tmpNode.value != value) {
             tmpParent = tmpNode;
-            if(tmpNode.value.compareTo(value) > 0) {
+            if(tmpNode.value.compareTo(value) < 0) {
                 tmpNode = tmpNode.right;
             } else {
                 tmpNode = tmpNode.left;
