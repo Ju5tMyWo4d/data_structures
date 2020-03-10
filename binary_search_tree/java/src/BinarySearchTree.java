@@ -93,11 +93,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 BinaryTreeNode minParent = tmpMin.getKey();
                 BinaryTreeNode minNode = tmpMin.getValue();
 
-                if(minParent == null) {
-
-                } else {
-
+                if(minParent != null) {
+                    minParent.left = minNode.right;
+                    minNode.right = node.right;
                 }
+                minNode.left = node.left;
+
+                root = minNode;
             }
         } else {
             if(node.right == null) {
@@ -116,14 +118,17 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 Pair<BinaryTreeNode, BinaryTreeNode> tmpMin = getMinNode(node.right);
                 BinaryTreeNode minParent = tmpMin.getKey();
                 BinaryTreeNode minNode = tmpMin.getValue();
-                minParent.left = minNode.right;
                 minNode.left = node.left;
-                minNode.right = node.right;
 
-                if(parent.left == node) {
-                    parent.left = minNode;
-                } else {
+                if(minParent != null) {
+                    minParent.left = minNode.right;
+                    minNode.right = node.right;
+                }
+
+                if(parent.right == node) {
                     parent.right = minNode;
+                } else {
+                    parent.left = minNode;
                 }
             }
         }
