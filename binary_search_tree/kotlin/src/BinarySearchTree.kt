@@ -160,4 +160,4 @@ class BinarySearchTree<T : Comparable<T>> {
 
 private data class BinaryTreeNode<T>(var value: T, var left: BinaryTreeNode<T>? = null, var right: BinaryTreeNode<T>? = null)
 
-private typealias ParentNodePair<T> = Pair<BinaryTreeNode<T>?, BinaryTreeNode<T>>
+private typealias ParentNodePair<T> = Pair<BinaryTreeNode<T>?, BinaryTreeNode<T>> // pair of nodes: first - parent, second - child
