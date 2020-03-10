@@ -75,6 +75,13 @@ class BinarySearchTreeTest {
             bt.remove(3)
             assertArrayEquals(arrayOf(1, 4, 6, 7, 8, 10, 13, 14), bt.toSortedArrayList().toArray())
         }
+
+        @Test
+        fun `remove node that is lowest in subtree`() {
+            val bt = BinarySearchTree(8, 3, 10, 1, 6, 14, 4, 7, 13, 15)
+            bt.remove(14)
+            assertArrayEquals(arrayOf(1, 3, 4, 6, 7, 8, 10, 13, 15), bt.toSortedArrayList().toArray())
+        }
     }
 
     @Nested
