@@ -99,9 +99,12 @@ class BinarySearchTree<T : Comparable<T>> {
                 }
                 else -> {
                     val (minParent, minNode) = getMinNode(node.right ?: return)
-                    minParent?.left = minNode.right
                     minNode.left = node.left
-                    minNode.right = node.right
+
+                    if(minParent != null) {
+                        minParent.left = minNode.right
+                        minNode.right = node.right
+                    }
 
                     if(parent.right === node) {
                         parent.right = minNode
