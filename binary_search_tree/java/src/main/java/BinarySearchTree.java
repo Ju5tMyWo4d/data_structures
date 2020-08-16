@@ -1,5 +1,3 @@
-package main;
-
 import com.sun.istack.internal.NotNull;
 import javafx.util.Pair;
 
