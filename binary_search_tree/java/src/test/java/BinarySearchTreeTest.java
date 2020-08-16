@@ -1,6 +1,7 @@
-import main.BinarySearchTree;
 import org.junit.Assert;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class BinarySearchTreeTest {
@@ -15,8 +16,9 @@ public class BinarySearchTreeTest {
 
         @Test
         public void addOneElement() {
-            main.BinarySearchTree<Integer> bt = new BinarySearchTree<>(7);
-            Assert.assertArrayEquals(new Integer[] {7}, bt.toSortedArrayList().toArray());
+            BinarySearchTree<Integer> bt = new BinarySearchTree<>(7);
+
+            assertThat(bt.toSortedArrayList()).containsOnly(7);
         }
 
         @Test
